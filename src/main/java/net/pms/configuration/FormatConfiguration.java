@@ -46,11 +46,14 @@ public class FormatConfiguration {
 	public static final String THREEGA = "3ga";
 	public static final String AAC = "aac";
 	public static final String AAC_HE = "aac-he";
+	public static final String AAC_LTP = "aac-ltp";
+	public static final String AACV4 = "aacv4";
 	public static final String AC3 = "ac3";
 	public static final String ADPCM = "adpcm";
 	public static final String ADTS = "adts";
 	public static final String AIFF = "aiff";
 	public static final String ALAC = "alac";
+	public static final String ALS = "als";
 	public static final String AMR = "amr";
 	public static final String ATMOS = "atmos";
 	public static final String ATRAC = "atrac";
@@ -95,6 +98,7 @@ public class FormatConfiguration {
 	public static final String MPEG2 = "mpeg2";
 	public static final String MPEGPS = "mpegps";
 	public static final String MPEGTS = "mpegts";
+	public static final String OGA = "oga";
 	public static final String OGG = "ogg";
 	public static final String OPUS = "opus";
 	public static final String PCX = "pcx";

@@ -1,5 +1,5 @@
 /*
- * PS3 Media Server, for streaming any medias to your PS3.
+ * PS3 Media Server, for streaming any media to your PS3.
  * Copyright (C) 2008  A.Brochard
  *
  * This program is free software; you can redistribute it and/or
@@ -16,15 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package net.pms.formats;
+package net.pms.formats.audio;
 
-public class MKV extends MPG {
+public class LPCM extends AudioBase {
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Identifier getIdentifier() {
-		return Identifier.MKV;
+		return Identifier.LPCM;
 	}
 
 	/**
@@ -33,29 +33,9 @@ public class MKV extends MPG {
 	@Override
 	public String[] getSupportedExtensions() {
 		return new String[] {
-			"3g2",
-			"3gp",
-			"3gp2",
-			"asf",
-			"asx",
-			"dv",
-			"evo",
-			"flv",
-			"hdmov",
-			"hdm",
-			"m2v",
-			"mk3d",
-			"mkv",
-			"mov",
-			"ogg",
-			"ogm",
-			"ogv",
-			"rmv",
-			"rmvb",
-			"rm",
-			"webm",
-			"265",
-			"h265"
-		};
+    "l16",
+    "lpcm",
+    "sw"
+    };
 	}
 }

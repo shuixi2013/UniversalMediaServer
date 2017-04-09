@@ -972,4 +972,51 @@ public class FormatConfigurationRegressionTest0 {
 
   }
 
+  @Test
+  public void test81() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.test81"); }
+
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.ALS;
+
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "als"+ "'", str0.equals("als"));
+
+  }
+
+  @Test
+  public void test86() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.test82"); }
+
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.OGA;
+
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "oga"+ "'", str0.equals("oga"));
+  }
+
+  @Test
+  public void test87() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.test87"); }
+
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.AAC_LTP;
+
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "aac-ltp"+ "'", str0.equals("aac-ltp"));
+
+  }
+
+  @Test
+  public void test88() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.test88"); }
+
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.AACV4;
+
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "aacv4"+ "'", str0.equals("aacv4"));
+
+  }
+
 }

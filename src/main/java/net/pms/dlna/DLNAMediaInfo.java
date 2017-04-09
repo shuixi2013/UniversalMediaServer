@@ -128,14 +128,13 @@ public class DLNAMediaInfo implements Cloneable {
 	 */
 	@Deprecated
 	public String frameRate;
-
-	private String frameRateMode;
+	private String frameRateOriginal;
 
 	/**
 	 * The frame rate mode as read from the parser
 	 */
 	private String frameRateModeRaw;
-	private String frameRateOriginal;
+	private String frameRateMode;
 
 	/**
 	 * @deprecated Use standard getter and setter to access this variable.
@@ -870,7 +869,7 @@ public class DLNAMediaInfo implements Cloneable {
 					}
 
 					// Set container for formats that the normal parsing fails to do from Format
-					if (StringUtils.isBlank(container) && ext != null) {
+					if (isBlank(container) && ext != null) {
 						if (ext.getIdentifier() == Identifier.ADPCM) {
 							audio.setCodecA(FormatConfiguration.ADPCM);
 						} else if (ext.getIdentifier() == Identifier.DSD) {
@@ -878,7 +877,7 @@ public class DLNAMediaInfo implements Cloneable {
 						}
 					}
 
-					if (StringUtils.isNotBlank(audio.getSongname())) {
+					if (isNotBlank(audio.getSongname())) {
 						if (renderer != null && renderer.isPrependTrackNumbers() && audio.getTrack() > 0) {
 							audio.setSongname(audio.getTrack() + ": " + audio.getSongname());
 						}
@@ -890,7 +889,7 @@ public class DLNAMediaInfo implements Cloneable {
 						audioTracks.add(audio);
 					}
 				}
-				if (StringUtils.isBlank(container)) {
+				if (isBlank(container)) {
 					container = audio.getCodecA();
 				}
 			}
@@ -1435,14 +1434,17 @@ public class DLNAMediaInfo implements Cloneable {
 				case "mov":
 					mimeType = HTTPResource.MOV_TYPEMIME;
 					break;
+				case FormatConfiguration.AAC:
+					mimeType = HTTPResource.AUDIO_AAC_TYPEMIME;
+					break;
+				case FormatConfiguration.AAC_HE:
+					mimeType = HTTPResource.AUDIO_AAC_TYPEMIME;
+					break;
 				case FormatConfiguration.ADPCM:
 					mimeType = HTTPResource.AUDIO_ADPCM_TYPEMIME;
 					break;
 				case FormatConfiguration.ADTS:
 					mimeType = HTTPResource.AUDIO_ADTS_TYPEMIME;
-					break;
-				case FormatConfiguration.M4A:
-					mimeType = HTTPResource.AUDIO_M4A_TYPEMIME;
 					break;
 				case FormatConfiguration.AC3:
 					mimeType = HTTPResource.AUDIO_AC3_TYPEMIME;
@@ -1452,6 +1454,9 @@ public class DLNAMediaInfo implements Cloneable {
 					break;
 				case FormatConfiguration.EAC3:
 					mimeType = HTTPResource.AUDIO_EAC3_TYPEMIME;
+					break;
+				case FormatConfiguration.M4A:
+					mimeType = HTTPResource.AUDIO_M4A_TYPEMIME;
 					break;
 				case FormatConfiguration.MPA:
 					mimeType = HTTPResource.AUDIO_MPA_TYPEMIME;
@@ -1505,8 +1510,8 @@ public class DLNAMediaInfo implements Cloneable {
 				case FormatConfiguration.WMA:
 					mimeType = HTTPResource.AUDIO_WMA_TYPEMIME;
 					break;
-				case FormatConfiguration.OGG:
-					mimeType = HTTPResource.AUDIO_OGG_TYPEMIME;
+				case FormatConfiguration.OGA:
+					mimeType = HTTPResource.AUDIO_OGA_TYPEMIME;
 					break;
 				case FormatConfiguration.AU:
 					mimeType = HTTPResource.AUDIO_AU_TYPEMIME;
@@ -1543,7 +1548,7 @@ public class DLNAMediaInfo implements Cloneable {
 				}
 			} else if (codecV == null && codecA != null) {
 				if ("ogg".equals(container)) {
-					mimeType = HTTPResource.AUDIO_OGG_TYPEMIME;
+					mimeType = HTTPResource.AUDIO_OGA_TYPEMIME;
 				} else if ("3gp".equals(container)) {
 					mimeType = HTTPResource.AUDIO_THREEGPPA_TYPEMIME;
 				} else if ("3g2".equals(container)) {
@@ -1568,7 +1573,9 @@ public class DLNAMediaInfo implements Cloneable {
 					mimeType = HTTPResource.AUDIO_WMA_TYPEMIME;
 				} else if (codecA.contains("pcm") || codecA.contains("wav") || codecA.contains("dts")) {
 					mimeType = HTTPResource.AUDIO_WAV_TYPEMIME;
-				} else if (codecA.contains("aac")) {
+				} else if (codecA.contains("aac") || codecA.contains("als")) {
+					mimeType = HTTPResource.AUDIO_AAC_TYPEMIME;
+				} else if (codecA.contains("alac")) {
 					mimeType = HTTPResource.AUDIO_M4A_TYPEMIME;
 				} else if (codecA.equals(FormatConfiguration.TRUEHD)) {
 					mimeType = HTTPResource.AUDIO_TRUEHD_TYPEMIME;
@@ -2142,6 +2149,7 @@ public class DLNAMediaInfo implements Cloneable {
 
 	/**
 	 * @return the frameRateOriginal
+	 * @since 6.6.0
 	 */
 	public String getFrameRateOriginal() {
 		return frameRateOriginal;
@@ -2149,6 +2157,7 @@ public class DLNAMediaInfo implements Cloneable {
 
 	/**
 	 * @param frameRateOriginal the frameRateOriginal to set
+	 * @since 6.6.0
 	 */
 	public void setFrameRateOriginal(String frameRateOriginal) {
 		this.frameRateOriginal = frameRateOriginal;
@@ -2172,6 +2181,7 @@ public class DLNAMediaInfo implements Cloneable {
 
 	/**
 	 * @return The unaltered frame rate mode
+	 * @since 6.6.0
 	 */
 	public String getFrameRateModeRaw() {
 		return frameRateModeRaw;
@@ -2179,6 +2189,7 @@ public class DLNAMediaInfo implements Cloneable {
 
 	/**
 	 * @param frameRateModeRaw the unaltered frame rate mode to set
+	 * @since 6.6.0
 	 */
 	public void setFrameRateModeRaw(String frameRateModeRaw) {
 		this.frameRateModeRaw = frameRateModeRaw;
