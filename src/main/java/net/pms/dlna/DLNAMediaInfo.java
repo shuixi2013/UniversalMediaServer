@@ -45,7 +45,6 @@ import net.pms.util.CoverUtil;
 import net.pms.util.FileUtil;
 import net.pms.util.MpegUtil;
 import net.pms.util.ProcessUtil;
-import net.pms.util.StringUtil;
 import net.pms.util.UnknownFormatException;
 import static net.pms.util.StringUtil.*;
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -808,7 +807,7 @@ public class DLNAMediaInfo implements Cloneable {
 
 							audio.getAudioProperties().setNumberOfChannels(2); // set default value of channels to 2
 							String channels = ah.getChannels().toLowerCase(Locale.ROOT);
-							if (StringUtils.isNotBlank(channels)) {
+							if (isNotBlank(channels)) {
 								if (channels.equals("1") || channels.contains("mono")) { // parse value "1" or "Mono"
 									audio.getAudioProperties().setNumberOfChannels(1);
 								} else if (!(channels.equals("2") || channels.equals("0") || channels.contains("stereo"))) {
@@ -821,7 +820,7 @@ public class DLNAMediaInfo implements Cloneable {
 								}
 							}
 
-							if (StringUtils.isNotBlank(ah.getEncodingType())) {
+							if (isNotBlank(ah.getEncodingType())) {
 								audio.setCodecA(ah.getEncodingType());
 							}
 
@@ -891,7 +890,7 @@ public class DLNAMediaInfo implements Cloneable {
 					}
 
 					// Set container for formats that the normal parsing fails to do from Format
-					if (StringUtils.isBlank(container) && ext != null) {
+					if (isBlank(container) && ext != null) {
 						if (ext.getIdentifier() == Identifier.ADPCM) {
 							audio.setCodecA(FormatConfiguration.ADPCM);
 						} else if (ext.getIdentifier() == Identifier.DSD) {
@@ -899,7 +898,7 @@ public class DLNAMediaInfo implements Cloneable {
 						}
 					}
 
-					if (StringUtils.isNotBlank(audio.getSongname())) {
+					if (isNotBlank(audio.getSongname())) {
 						if (renderer != null && renderer.isPrependTrackNumbers() && audio.getTrack() > 0) {
 							audio.setSongname(audio.getTrack() + ": " + audio.getSongname());
 						}
@@ -911,7 +910,7 @@ public class DLNAMediaInfo implements Cloneable {
 						audioTracks.add(audio);
 					}
 				}
-				if (StringUtils.isBlank(container)) {
+				if (isBlank(container)) {
 					container = audio.getCodecA();
 				}
 			}
@@ -1463,9 +1462,6 @@ public class DLNAMediaInfo implements Cloneable {
 				case FormatConfiguration.ADTS:
 					mimeType = HTTPResource.AUDIO_ADTS_TYPEMIME;
 					break;
-				case FormatConfiguration.M4A:
-					mimeType = HTTPResource.AUDIO_M4A_TYPEMIME;
-					break;
 				case FormatConfiguration.AC3:
 					mimeType = HTTPResource.AUDIO_AC3_TYPEMIME;
 					break;
@@ -1477,6 +1473,9 @@ public class DLNAMediaInfo implements Cloneable {
 					break;
 				case FormatConfiguration.EAC3:
 					mimeType = HTTPResource.AUDIO_EAC3_TYPEMIME;
+					break;
+				case FormatConfiguration.M4A:
+					mimeType = HTTPResource.AUDIO_M4A_TYPEMIME;
 					break;
 				case FormatConfiguration.MPA:
 					mimeType = HTTPResource.AUDIO_MPA_TYPEMIME;
@@ -2949,7 +2948,7 @@ public class DLNAMediaInfo implements Cloneable {
 	 *         audio or video, {@code false} otherwise.
 	 */
 	public boolean isAudioOrVideoContainer() {
-		if (StringUtils.isBlank(container)) {
+		if (isBlank(container)) {
 			return false;
 		}
 		for (String format : audioOrVideoContainers.keySet()) {
@@ -2972,7 +2971,7 @@ public class DLNAMediaInfo implements Cloneable {
 	 *         it doesn't apply.
 	 */
 	public String getAudioVariantFormat() {
-		if (StringUtils.isBlank(container)) {
+		if (isBlank(container)) {
 			return null;
 		}
 		for (Entry<String, String> entry : audioOrVideoContainers.entrySet()) {

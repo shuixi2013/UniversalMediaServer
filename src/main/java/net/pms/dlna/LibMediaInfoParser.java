@@ -86,6 +86,7 @@ public class LibMediaInfoParser {
 				// set General
 				getFormat(general, media, currentAudioTrack, MI.Get(general, 0, "Format"), file);
 				getFormat(general, media, currentAudioTrack, MI.Get(general, 0, "CodecID").trim(), file);
+				getFormat(general, media, currentAudioTrack, MI.Get(general, 0, "InternetMediaType"), file);
 				media.setDuration(getDuration(MI.Get(general, 0, "Duration/String1")));
 				media.setBitrate(getBitrate(MI.Get(general, 0, "OverallBitRate")));
 				value = MI.Get(general, 0, "Cover_Data");
@@ -506,8 +507,6 @@ public class LibMediaInfoParser {
 			format = FormatConfiguration.VP8;
 		} else if (value.startsWith("vp9")) {
 			format = FormatConfiguration.VP9;
-		} else if (value.contains("xvid")) {
-			format = FormatConfiguration.MP4;
 		} else if (value.contains("mjpg") || value.contains("m-jpeg")) {
 			format = FormatConfiguration.MJPEG;
 		} else if (value.contains("div") || value.contains("dx")) {
