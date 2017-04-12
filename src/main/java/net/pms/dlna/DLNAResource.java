@@ -1488,6 +1488,7 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 	/**
 	 * @deprecated Use {@link #syncResolve()} instead
 	 */
+	@Deprecated
 	public void resolve() {
 		if (!resolved) {
 			resolveOnce();
@@ -2447,8 +2448,8 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 
 					if (media.getDuration() != null) {
 						if (getSplitRange().isEndLimitAvailable()) {
-							wireshark.append(" duration=").append(convertTimeToString(getSplitRange().getDuration(), DURATION_TIME_FORMAT));
-							addAttribute(sb, "duration", convertTimeToString(getSplitRange().getDuration(), DURATION_TIME_FORMAT));
+							wireshark.append(" duration=").append(StringUtil.formatDidlLiteDuration(getSplitRange().getDuration()));
+							addAttribute(sb, "duration", StringUtil.formatDidlLiteDuration(getSplitRange().getDuration()));
 						} else {
 							wireshark.append(" duration=").append(media.getDurationString());
 							addAttribute(sb, "duration", media.getDurationString());
@@ -2491,8 +2492,8 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 							addAttribute(sb, "bitrate", media.getBitrate());
 						}
 						if (media.getDuration() != null && media.getDuration().doubleValue() != 0.0) {
-							wireshark.append(" duration=").append(convertTimeToString(media.getDuration(), DURATION_TIME_FORMAT));
-							addAttribute(sb, "duration", convertTimeToString(media.getDuration(), DURATION_TIME_FORMAT));
+							wireshark.append(" duration=").append(StringUtil.formatDidlLiteDuration(media.getDuration()));
+							addAttribute(sb, "duration", StringUtil.formatDidlLiteDuration(media.getDuration()));
 						}
 
 						int transcodeFrequency = -1;
