@@ -676,12 +676,8 @@
 					<target>1.7</target>
 					<testSource>1.7</testSource>
 					<testTarget>1.7</testTarget>
-					<fork>false</fork>
-					<!-- <compilerArgument>${compilerArgument}</compilerArgument> -->
-					<compilerArgs>
-						<arg>-verbose</arg>
-						<arg>-Xlint:all,-options,-path</arg>
-					 </compilerArgs>
+					<fork>true</fork>
+					<compilerArgument>${compilerArgument}</compilerArgument>
 				</configuration>
 			</plugin>
 
