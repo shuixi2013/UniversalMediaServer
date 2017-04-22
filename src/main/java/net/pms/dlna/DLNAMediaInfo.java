@@ -1563,7 +1563,7 @@ public class DLNAMediaInfo implements Cloneable {
 				}
 			} else if (codecV == null && codecA != null) {
 				if ("ogg".equals(container)) {
-					mimeType = HTTPResource.AUDIO_OGG_TYPEMIME;
+					mimeType = HTTPResource.AUDIO_OGA_TYPEMIME;
 				} else if ("3gp".equals(container)) {
 					mimeType = HTTPResource.AUDIO_THREEGPPA_TYPEMIME;
 				} else if ("3g2".equals(container)) {

@@ -114,6 +114,8 @@ public class FormatFactoryTest {
 		testSingleFormat("test.jpg", "JPG", Format.IMAGE);
 		testSingleFormat("test.mpo", "JPG", Format.IMAGE);
 		testSingleFormat("test.m4a", "M4A", Format.AUDIO);
+		testSingleFormat("test.m4b", "M4A", Format.AUDIO);
+		testSingleFormat("test.m4r", "M4A", Format.AUDIO);
 		testSingleFormat("test.3g2", "MKV", Format.VIDEO);
 		testSingleFormat("test.3gp", "MKV", Format.VIDEO);
 		testSingleFormat("test.3gp2", "MKV", Format.VIDEO);
@@ -128,6 +130,7 @@ public class FormatFactoryTest {
 		testSingleFormat("test.mk3d", "MKV", Format.VIDEO);
 		testSingleFormat("test.mkv", "MKV", Format.VIDEO);
 		testSingleFormat("test.mov", "MKV", Format.VIDEO);
+		testSingleFormat("test.ogg", "MKV", Format.VIDEO);
 		testSingleFormat("test.ogm", "MKV", Format.VIDEO);
 		testSingleFormat("test.ogv", "MKV", Format.VIDEO);
 		testSingleFormat("test.rmv", "MKV", Format.VIDEO);
@@ -168,10 +171,9 @@ public class FormatFactoryTest {
 		testSingleFormat("test.mp2", "MPGAudio", Format.AUDIO);
 		testSingleFormat("test.sub", "MicroDVD", Format.SUBTITLE);
 		testSingleFormat("test.ape", "MonkeysAudio", Format.AUDIO);
-		testSingleFormat("test.oga", "OGG", Format.AUDIO);
-		testSingleFormat("test.ogg", "OGG", Format.AUDIO);
-		testSingleFormat("test.spx", "OGG", Format.AUDIO);
-		testSingleFormat("test.opus", "OGG", Format.AUDIO);
+		testSingleFormat("test.oga", "OGA", Format.AUDIO);
+		testSingleFormat("test.spx", "OGA", Format.AUDIO);
+		testSingleFormat("test.opus", "OGA", Format.AUDIO);
 		testSingleFormat("test.pls", "PLAYLIST", Format.PLAYLIST);
 		testSingleFormat("test.m3u", "PLAYLIST", Format.PLAYLIST);
 		testSingleFormat("test.m3u8", "PLAYLIST", Format.PLAYLIST);

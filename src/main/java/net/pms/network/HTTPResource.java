@@ -49,7 +49,6 @@ public class HTTPResource {
 	public static final String AUDIO_ADPCM_TYPEMIME = "audio/x-adpcm";
 	public static final String AUDIO_ADTS_TYPEMIME = "audio/vnd.dlna.adts";
 	public static final String AUDIO_AIFF_TYPEMIME = "audio/aiff";
-	public static final String AUDIO_ALS_TYPEMIME = "audio/mp4";
 	public static final String AUDIO_APE_TYPEMIME = "audio/x-ape";
 	public static final String AUDIO_ATRAC_TYPEMIME = "audio/x-sony-oma";
 	public static final String AUDIO_AU_TYPEMIME = "audio/basic";
@@ -66,7 +65,7 @@ public class HTTPResource {
 	public static final String AUDIO_MP2_TYPEMIME = "audio/mpeg";
 	public static final String AUDIO_MPA_TYPEMIME = "audio/mpeg";
 	public static final String AUDIO_MPC_TYPEMIME = "audio/x-musepack";
-	public static final String AUDIO_OGG_TYPEMIME = "audio/ogg";
+	public static final String AUDIO_OGA_TYPEMIME = "audio/ogg";
 	public static final String AUDIO_RA_TYPEMIME = "audio/vnd.rn-realaudio";
 	public static final String AUDIO_SHN_TYPEMIME = "audio/x-shn";
 	public static final String AUDIO_THREEGPPA_TYPEMIME = "audio/3gpp";

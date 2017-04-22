@@ -993,14 +993,14 @@ public class FormatConfigurationRegressionTest0 {
   }
 
   @Test
-  public void testOGGAudio() throws Throwable {
+  public void testOGA() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest0.testOGGAudio"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.testOGA"); }
 
     java.lang.String str0 = net.pms.configuration.FormatConfiguration.OGA;
 
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "ogg-audio"+ "'", str0.equals("ogg-audio"));
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "oga"+ "'", str0.equals("oga"));
   }
 
   @Test

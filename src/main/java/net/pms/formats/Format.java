@@ -77,6 +77,7 @@ public abstract class Format implements Cloneable {
 		MPA,
 		MPC,
 		MPG,
+		OGA,
 		OGG,
 		PCX,
 		PICT,

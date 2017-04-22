@@ -2272,8 +2272,8 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 					dlnaOrgPnFlags = "DLNA.ORG_PN=HEAAC_MULT5_ISO";
 				} else if (mime.equals(AUDIO_THREEGPPA_TYPEMIME) || mime.equals(AUDIO_THREEGPP2A_TYPEMIME)) {
 					dlnaOrgPnFlags = "DLNA.ORG_PN=HEAAC_MULT5_ISO";
-//				} else if (mime.equals(AUDIO_ALS_TYPEMIME)) {
-//					dlnaOrgPnFlags = "DLNA.ORG_PN=ALS_MULT5_ISO";
+				} else if (getMediaAudio() != null && getMediaAudio().getAudioCodec().equalsIgnoreCase("als")) {
+					dlnaOrgPnFlags = "DLNA.ORG_PN=ALS_MULT5_ISO";
 				} else if (getMediaAudio() != null && getMediaAudio().getAudioCodec().equalsIgnoreCase(FormatConfiguration.WMA)) {
 					dlnaOrgPnFlags = "DLNA.ORG_PN=WMAFULL";
 				} else if (getMediaAudio() != null && getMediaAudio().getAudioCodec().equalsIgnoreCase(FormatConfiguration.WMALOSSLESS)) {
