@@ -42,6 +42,11 @@ public class MPG extends Format {
 	@Override
 	public String[] getSupportedExtensions() {
 		return new String[] {
+			"264",
+			"3g2",
+			"3gp",
+			"3gp2",
+			"asf",
 			"avi",
 			"div",
 			"divx",

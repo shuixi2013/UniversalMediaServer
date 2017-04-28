@@ -35,6 +35,7 @@ public class ADTS extends AudioBase {
 	public String[] getSupportedExtensions() {
 		return new String[] {
 			"aac",
+			"aacp",
 			"adts"
 		};
 	}

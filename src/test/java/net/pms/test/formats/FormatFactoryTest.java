@@ -84,6 +84,7 @@ public class FormatFactoryTest {
 		testSingleFormat("test.ac3", "AC3", Format.AUDIO);
 		testSingleFormat("test.act", "ADPCM", Format.AUDIO);
 		testSingleFormat("test.aac", "ADTS", Format.AUDIO);
+		testSingleFormat("test.aacp", "ADTS", Format.AUDIO);
 		testSingleFormat("test.adts", "ADTS", Format.AUDIO);
 		testSingleFormat("test.aif", "AIFF", Format.AUDIO);
 		testSingleFormat("test.aiff", "AIFF", Format.AUDIO);
@@ -118,10 +119,11 @@ public class FormatFactoryTest {
 		testSingleFormat("test.m4a", "M4A", Format.AUDIO);
 		testSingleFormat("test.m4b", "M4A", Format.AUDIO);
 		testSingleFormat("test.m4r", "M4A", Format.AUDIO);
-		testSingleFormat("test.3g2", "MKV", Format.VIDEO);
-		testSingleFormat("test.3gp", "MKV", Format.VIDEO);
-		testSingleFormat("test.3gp2", "MKV", Format.VIDEO);
-		testSingleFormat("test.asf", "MKV", Format.VIDEO);
+		testSingleFormat("test.264", "MPG", Format.VIDEO);
+		testSingleFormat("test.3g2", "MPG", Format.VIDEO);
+		testSingleFormat("test.3gp", "MPG", Format.VIDEO);
+		testSingleFormat("test.3gp2", "MPG", Format.VIDEO);
+		testSingleFormat("test.asf", "MPG", Format.VIDEO);
 		testSingleFormat("test.asx", "MKV", Format.VIDEO);
 		testSingleFormat("test.dv", "MKV", Format.VIDEO);
 		testSingleFormat("test.evo", "MKV", Format.VIDEO);

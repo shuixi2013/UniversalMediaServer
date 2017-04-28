@@ -43,11 +43,11 @@ public class FormatConfiguration {
 	private ArrayList<SupportSpec> supportSpecs;
 	public static final String THREEGPP = "3gp";
 	public static final String THREEGPP2 = "3g2";
+	public static final String THREEG2A = "3g2a";
 	public static final String THREEGA = "3ga";
 	public static final String AAC = "aac";
 	public static final String AAC_HE = "aac-he";
 	public static final String AAC_LTP = "aac-ltp";
-	public static final String AACV4 = "aacv4";
 	public static final String AC3 = "ac3";
 	public static final String ADPCM = "adpcm";
 	public static final String ADTS = "adts";
@@ -55,6 +55,7 @@ public class FormatConfiguration {
 	public static final String ALAC = "alac";
 	public static final String ALS = "als";
 	public static final String AMR = "amr";
+	public static final String ASF = "asf";
 	public static final String ATMOS = "atmos";
 	public static final String ATRAC = "atrac";
 	public static final String AU = "au";
@@ -92,6 +93,7 @@ public class FormatConfiguration {
 	public static final String MP2 = "mp2";
 	public static final String MP3 = "mp3";
 	public static final String MP4 = "mp4";
+	public static final String MP43 = "mp43";
 	public static final String MPA = "mpa";
 	public static final String MPC = "mpc";
 	public static final String MPEG1 = "mpeg1";
@@ -111,6 +113,7 @@ public class FormatConfiguration {
 	public static final String REALAUDIO_LOSSLESS = "ralf";
 	public static final String RM = "rm";
 	public static final String SHORTEN = "shn";
+	public static final String SLS = "sls";
 	public static final String SORENSON = "sor";
 	public static final String THEORA = "theora";
 	public static final String TIFF = "tiff";
@@ -126,6 +129,7 @@ public class FormatConfiguration {
 	public static final String WAVPACK = "wavpack";
 	public static final String WBMP = "wbmp";
 	public static final String WEBM = "webm";
+	public static final String WEBM_Audio = "webma";
 	public static final String WEBP = "webp";
 	public static final String WMA = "wma";
 	public static final String WMALOSSLESS = "wmalossless";

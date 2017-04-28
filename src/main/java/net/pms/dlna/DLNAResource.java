@@ -1,5 +1,5 @@
 /*
- * PS3 Media Server, for streaming any medias to your PS3.
+ * PS3 Media Server, for streaming any media to your PS3.
  * Copyright (C) 2008  A.Brochard
  *
  * This program is free software; you can redistribute it and/or
@@ -431,7 +431,7 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 		// TODO: Determine renderer's correct localization value
 		int localizationValue = 1;
 		String dlnaOrgPnFlags = getDlnaOrgPnFlags(mediaRenderer, localizationValue);
-		return (dlnaOrgPnFlags != null ? (dlnaOrgPnFlags + ";") : "") + getDlnaOrgOpFlags(mediaRenderer) + ";DLNA.ORG_CI=0;DLNA.ORG_FLAGS=01700000000000000000000000000000";
+		return (dlnaOrgPnFlags != null ? (dlnaOrgPnFlags + ";") : "") + getDlnaOrgOpFlags(mediaRenderer); // + ";DLNA.ORG_FLAGS=01700000000000000000000000000000";
 	}
 
 	public DLNAResource getPrimaryResource() {
@@ -1795,7 +1795,7 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 	 * TimeSeekRange.DLNA.ORG (seek by time) headers; the second allows it to send RANGE (seek by byte)
 	 * headers.
 	 *
-	 *    00 - no seeking (or even pausing) allowed
+	 *    00 - forbidden by the DLNA standard
 	 *    01 - seek by byte
 	 *    10 - seek by time
 	 *    11 - seek by both
@@ -1861,7 +1861,7 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 	private String dlnaOrgCiFlags;
 //		String dlnaOrgCiFlags = null;
 
-//		if (!RendererConfiguration.isVideoSupported() || !RendererConfiguration.isAudioSupported()) {
+//		if (!format.isCompatible(newChild.media, defaultRenderer)) {
 //			dlnaOrgCiFlags = "DLNA.ORG_CI=1";
 //		}
 
@@ -2284,10 +2284,10 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 					dlnaOrgPnFlags = "DLNA.ORG_PN=MP3";
 				} else if (mime.substring(0, 9).equals(AUDIO_LPCM_TYPEMIME)) {
 					dlnaOrgPnFlags = "DLNA.ORG_PN=LPCM";
+				} else if (mime.equals(AUDIO_AAC_TYPEMIME)) {
+					dlnaOrgPnFlags = "DLNA.ORG_PN=AAC_ISO_320";
 				} else if (mime.equals(AUDIO_ADTS_TYPEMIME)) {
 					dlnaOrgPnFlags = "DLNA.ORG_PN=AAC_ADTS_320";
-				} else if (mime.equals(AUDIO_M4A_TYPEMIME)) {
-					dlnaOrgPnFlags = "DLNA.ORG_PN=AAC_ISO_320";
 				} else if (mime.equals(AUDIO_THREEGPPA_TYPEMIME) || mime.equals(AUDIO_THREEGPP2A_TYPEMIME)) {
 					dlnaOrgPnFlags = "DLNA.ORG_PN=AAC_ISO_320";
 				} else if (getMediaAudio() != null && getMediaAudio().getAudioCodec().equalsIgnoreCase("als")) {
@@ -2468,7 +2468,7 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 				openTag(sb, "res");
 				addAttribute(sb, "xmlns:dlna", "urn:schemas-dlna-org:metadata-1-0/");
 				String dlnaOrgPnFlags = getDlnaOrgPnFlags(mediaRenderer, c);
-				String tempString = "http-get:*:" + getRendererMimeType(mediaRenderer) + ":" + (dlnaOrgPnFlags != null ? (dlnaOrgPnFlags + ";") : "") + getDlnaOrgOpFlags(mediaRenderer) + (dlnaOrgCiFlags != null ? (";" + dlnaOrgCiFlags) : "");
+				String tempString = "http-get:*:" + getRendererMimeType(mediaRenderer) + ":" + (dlnaOrgPnFlags != null ? (dlnaOrgPnFlags + ";") : "") + getDlnaOrgOpFlags(mediaRenderer) + (dlnaOrgCiFlags != null ? (";" + dlnaOrgCiFlags) : "") + (!mediaRenderer.isDLNALocalizationRequired() ? ";DLNA.ORG_FLAGS=01500000000000000000000000000000" : "");
 				wireshark.append(' ').append(tempString);
 				addAttribute(sb, "protocolInfo", tempString);
 				if (subsAreValidForStreaming && mediaRenderer.offerSubtitlesByProtocolInfo() && !mediaRenderer.useClosedCaption()) {
@@ -2549,7 +2549,10 @@ public abstract class DLNAResource extends HTTPResource implements Cloneable, Ru
 								}
 								if (firstAudioTrack.getBitsperSample() != 0) {
 									addAttribute(sb, "bitsPerSample", firstAudioTrack.getBitsperSample());
-								} else if (FormatConfiguration.ADTS.equals(media.getContainer()) || media.getMimeType().equals(AUDIO_LPCM_TYPEMIME)) {
+								} else if (
+										FormatConfiguration.ADTS.equals(media.getContainer()) ||
+										media.getMimeType().equals(AUDIO_LPCM_TYPEMIME)
+									) {
 									addAttribute(sb, "bitsPerSample", 16);
 								}
 								if (firstAudioTrack.getAudioProperties().getNumberOfChannels() > 0) {

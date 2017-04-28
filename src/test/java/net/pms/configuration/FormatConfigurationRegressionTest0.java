@@ -1012,10 +1012,22 @@ public class FormatConfigurationRegressionTest0 {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest0.test88"); }
 
-    java.lang.String str0 = net.pms.configuration.FormatConfiguration.AACV4;
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.SLS;
 
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "aacv4"+ "'", str0.equals("aacv4"));
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "sls"+ "'", str0.equals("sls"));
+
+  }
+
+  @Test
+  public void test89() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest0.test89"); }
+
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.WEBM_Audio;
+
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str0 + "' != '" + "webma"+ "'", str0.equals("webma"));
 
   }
 
