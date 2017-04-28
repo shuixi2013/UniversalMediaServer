@@ -485,7 +485,7 @@ public class FormatConfigurationRegressionTest0 {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest0.test40"); }
 
-    java.lang.String str0 = net.pms.configuration.FormatConfiguration.CINEPACK;
+    java.lang.String str0 = net.pms.configuration.FormatConfiguration.CINEPAK;
 
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue("'" + str0 + "' != '" + "cvid"+ "'", str0.equals("cvid"));
