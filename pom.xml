@@ -435,6 +435,12 @@
     		<groupId>com.github.oshi</groupId>
     		<artifactId>oshi-core</artifactId>
     		<version>3.4.2</version>
+    		<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>
