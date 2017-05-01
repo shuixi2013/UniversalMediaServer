@@ -27,7 +27,13 @@
 
 package net.pms.dlna;
 
-import com.sun.jna.*;
+import com.sun.jna.FunctionMapper;
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.WString;
 import java.lang.reflect.Method;
 import static java.util.Collections.singletonMap;
 import org.slf4j.Logger;
