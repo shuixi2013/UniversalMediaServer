@@ -42,9 +42,19 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 	 * @deprecated Use standard getter and setter to access this variable.
 	 */
 	@Deprecated
-	public int bitsperSample = 16;
+	public int bitsperSample;
 
+	/**
+	 * @deprecated Use standard getter and setter to access this variable.
+	 */
+	@Deprecated
 	private int bitRate;
+
+	/**
+	 * @deprecated Use standard getter and setter to access this variable.
+	 */
+	@Deprecated
+	private String rawBitRateMode;
 
 	/**
 	 * @deprecated Use standard getter and setter to access this variable.
@@ -443,15 +453,13 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 		} else if (isDTS()) {
 			return "DTS";
 		} else if (isDTSHD()) {
-			return "DTS HD";
+			return "DTS-HD";
 		} else if (isEAC3()) {
 			return "Enhanced AC-3";
 		} else if (isFLAC()) {
 			return "FLAC";
 		} else if (isHEAAC()) {
 			return "HE-AAC";
-		} else if (isMKA()) {
-			return "Matroska Audio";
 		} else if (isMLP()) {
 			return "MLP";
 		} else if (isMonkeysAudio()) {
@@ -518,10 +526,8 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 			result.append(", ");
 		}
 		result.append("Audio Codec: ").append(getAudioCodec());
-
-		result.append(", Bitrate: ").append(getBitRate());
-		if (getBitsperSample() != 16) {
-			result.append(", Bits per Sample: ").append(getBitsperSample());
+		if (isNotBlank(getRawBitRateMode())) {
+			result.append(", Bitrate Mode: ").append(getRawBitRateMode());
 		}
 		if (getAudioProperties() != null) {
 			result.append(", ").append(getAudioProperties());
@@ -565,7 +571,7 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 	 * @since 1.50
 	 */
 	public int getBitsperSample() {
-		return bitsperSample;
+		return audioProperties.getBitsperSample();
 	}
 
 	/**
@@ -576,6 +582,7 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 	 */
 	public void setBitsperSample(int bitsperSample) {
 		this.bitsperSample = bitsperSample;
+		audioProperties.setBitsperSample(bitsperSample);
 	}
 
 	/**
@@ -584,7 +591,7 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 	 * @return Audio bitrate.
 	 */
 	public int getBitRate() {
-		return bitRate;
+		return audioProperties.getBitRate();
 	}
 
 	/**
@@ -594,6 +601,27 @@ public class DLNAMediaAudio extends DLNAMediaLang implements Cloneable {
 	 */
 	public void setBitRate(int bitRate) {
 		this.bitRate = bitRate;
+		audioProperties.setBitRate(bitRate);
+	}
+
+	/**
+	 * Returns audio raw bitrate mode.
+	 *
+	 * @return Audio raw bitrate mode.
+	 * @since 6.6.1
+	 */
+	public String getRawBitRateMode() {
+		return rawBitRateMode;
+	}
+
+	/**
+	 * Sets audio raw bitrate mode.
+	 *
+	 * @param bitRateMode Audio raw bitrate mode to set.
+	 * @since 6.6.1
+	 */
+	public void setRawBitRateMode(String rawBitRateMode) {
+		this.rawBitRateMode = rawBitRateMode;
 	}
 
 	/**

@@ -1713,11 +1713,13 @@ public class DLNAMediaInfo implements Cloneable {
 	}
 
 	public boolean isMuxable(String filename, String codecA) {
-		return codecA != null && (codecA.startsWith("dts") || codecA.equals("dca"));
+		return codecA != null && (codecA.startsWith("dts") || codecA.startsWith("a_dts") || codecA.equals("dca"));
 	}
 
 	public boolean isLossless(String codecA) {
-		return codecA != null && (codecA.contains("pcm") || codecA.startsWith("dts") || codecA.equals("dca") || codecA.contains("flac")) && !codecA.contains("pcm_u8") && !codecA.contains("pcm_s8");
+		return codecA != null && (codecA.startsWith("pcm") || codecA.startsWith("dts") ||
+			codecA.startsWith("a_dts") || codecA.equals("dca") ||
+			codecA.contains("flac")) && !codecA.contains("pcm_u8") && !codecA.contains("pcm_s8");
 	}
 
 	@Override
@@ -1780,7 +1782,7 @@ public class DLNAMediaInfo implements Cloneable {
 			}
 
 		} else if (getAudioTrackCount() > 0) {
-			result.append(", Bitrate: ").append(getBitrate());
+			result.append(", Overall Bitrate: ").append(getBitrate());
 			result.append(", Duration: ").append(getDurationString());
 			appendAudioTracks(result);
 		}
