@@ -87,6 +87,7 @@ public class LibMediaInfoParser {
 				getFormat(general, media, currentAudioTrack, MI.Get(general, 0, "CodecID").trim(), file);
 				media.setDuration(getDuration(MI.Get(general, 0, "Duration/String1")));
 				media.setBitrate(getBitrate(MI.Get(general, 0, "OverallBitRate")));
+				media.setTruncated(getTruncated(MI.Get(general, 0, "IsTruncated")));
 				value = MI.Get(general, 0, "Cover_Data");
 				if (!value.isEmpty()) {
 					try {
@@ -728,6 +729,14 @@ public class LibMediaInfoParser {
 		}
 	}
 
+	public static String getTruncated(String value) {
+		if (isNotBlank(value)) {
+			return value;
+		} else {
+			return null;
+		}
+	}
+
 	public static int getBitrate(String value) {
 		if (value.isEmpty()) {
 			return 0;
@@ -761,8 +770,8 @@ public class LibMediaInfoParser {
 
 	public static String getSampleFrequency(String value) {
 		/**
-		 * Some tracks show several values, e.g. "48000 / 48000 / 24000" for HE-AAC
-		 * We store only the first value
+		 * Some tracks show several values, e.g. "48000 / 48000 / 24000" for HE-AAC.
+		 * We store only the first value.
 		 */
 		if (value.indexOf('/') > -1) {
 			value = value.substring(0, value.indexOf('/'));
@@ -808,7 +817,7 @@ public class LibMediaInfoParser {
 	}
 
 	/**
-	 * @deprecated use trim()
+	 * @deprecated use trim().
 	 */
 	@Deprecated
 	public static String getFlavor(String value) {
