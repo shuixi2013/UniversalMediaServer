@@ -1,5 +1,5 @@
 /*
- * PS3 Media Server, for streaming any medias to your PS3.
+ * PS3 Media Server, for streaming any media to your PS3.
  * Copyright (C) 2008  A.Brochard
  *
  * This program is free software; you can redistribute it and/or
@@ -981,7 +981,7 @@ public class FFMpegVideo extends Player {
 
 			String customFFmpegOptions = renderer.getCustomFFmpegOptions();
 
-			// Audio bitrate
+			// Audio parameters
 			if (!ac3Remux && !dtsRemux && !(type() == Format.AUDIO)) {
 				int channels = 0;
 				if (
@@ -997,6 +997,8 @@ public class FFMpegVideo extends Player {
 					channels = 2;
 				} else if (params.aid != null && params.aid.getAudioProperties().getNumberOfChannels() > configuration.getAudioChannelCount()) {
 					channels = configuration.getAudioChannelCount();
+				} else if (params.aid != null && params.aid.getAudioProperties().getNumberOfChannels() > 0) {
+					channels = params.aid.getAudioProperties().getNumberOfChannels();
 				}
 
 				if (!customFFmpegOptions.contains("-ac ") && channels > 0) {

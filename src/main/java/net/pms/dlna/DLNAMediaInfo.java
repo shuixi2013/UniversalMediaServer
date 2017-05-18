@@ -1742,6 +1742,17 @@ public class DLNAMediaInfo implements Cloneable {
 			result.append(", Video Bitrate: ").append(getBitrate());
 			result.append(", Video Tracks: ").append(getVideoTrackCount());
 			result.append(", Video Codec: ").append(getCodecV());
+			if (isNotBlank(getStereoscopy())) {
+				result.append(", Stereoscopy Method: ").append(getStereoscopy());
+			} else if (isNotBlank(getH264Profile())) {
+				if (
+					getH264Profile().startsWith("stereo ") ||
+					getH264Profile().startsWith("multiview ") ||
+					getH264Profile().startsWith("3d ")
+				) {
+					result.append(", Stereoscopy Method: ").append(getH264Profile());
+				}
+			}
 			result.append(", Duration: ").append(getDurationString());
 			result.append(", Video Resolution: ").append(getWidth()).append(" x ").append(getHeight());
 			if (isNotBlank(getFrameRate())) {
