@@ -987,7 +987,6 @@ public class RequestV2 extends HTTPResource {
 					@Override
 					public void operationComplete(ChannelFuture future) {
 						try {
-							PMS.get().getSleepManager().stopPlaying();
 							inputStream.close();
 						} catch (IOException e) {
 							LOGGER.error("Caught exception", e);
@@ -1002,7 +1001,6 @@ public class RequestV2 extends HTTPResource {
 			} else {
 				// HEAD method is being used, so simply clean up after the response was sent.
 				try {
-					PMS.get().getSleepManager().stopPlaying();
 					inputStream.close();
 				} catch (IOException ioe) {
 					LOGGER.error("Caught exception", ioe);
