@@ -198,6 +198,8 @@ public class LibMediaInfoParser {
 							currentAudioTrack.setBitRate(getBitrate(MI.Get(audio, i, "BitRate_Maximum")));
 						} else if (isNotBlank(MI.Get(audio, i, "BitRate_Nominal"))) {
 							currentAudioTrack.setBitRate(getBitrate(MI.Get(audio, i, "BitRate_Nominal")));
+						} else if (isNotBlank(MI.Get(audio, i, "BitRate_Encoded"))) {
+							currentAudioTrack.setBitRate(getBitrate(MI.Get(audio, i, "BitRate_Encoded")));
 						} else {
 							currentAudioTrack.setBitRate(getBitrate(MI.Get(audio, i, "BitRate")));
 						}
